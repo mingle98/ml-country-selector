@@ -1,0 +1,69 @@
+
+$dark-font-color: #858585;
+$dark-pagebg-color: #1b1b1b;
+$dark-seaechInputbg-color: #222222;
+$dark-seaechInputfnot-color: rgba(255, 255, 255, .8);
+$itemBebalColor: #2c2c2c;
+.ml-country-selector-dark {
+    background-color: $dark-pagebg-color;
+    .hot-country-babel {
+        background-color: $dark-pagebg-color;
+    }
+    .header-box {
+        background-color: $dark-pagebg-color;
+        .inputBox .search-input {
+            background-color: $dark-seaechInputbg-color;
+            color: $dark-seaechInputfnot-color;
+        }
+        .inputBox .input-out-btn {
+            color: $dark-font-color;
+        }
+        .topTip-wrap {
+            background-color: $dark-pagebg-color !important;
+            .body-article-tipTop {
+                color: $dark-font-color !important;
+                background-color: $dark-pagebg-color !important;
+            }
+        }
+    }
+    .listItem {
+        background-color: $dark-pagebg-color;
+        // border-bottom: .1rem solid rgb(85, 85, 85);
+        &::after {
+            background: $dark-font-color;
+        }
+    }
+    .hot-area-box {
+        .hotCountryBox {
+            a {
+                color: $dark-font-color;
+            }
+            .hot-countrylist-ul li{
+                color: $dark-font-color;
+            }
+        }
+    }
+    .country-area-box .countryListBox ul{
+        a,li {
+            color: $dark-font-color;
+        }
+
+    }
+    .slide-box .sildebarBox .sildebarItem {
+        a {
+            color: $dark-font-color;
+        }
+    }
+    .searchCountryBox .listItem {
+        color: $dark-font-color;
+    }
+    .search-input-wrapper.search-input_after {
+        background-color: $dark-seaechInputbg-color;
+    }
+    .searchCountryBox {
+        background-color: $dark-pagebg-color;
+    }
+    .itemBebal {
+        background: $itemBebalColor;
+    }
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>国家选择器demo</title>
+    <script src="./dist/index.js"></script>
+    <style>
+        html,body {
+            font-size: 10px;
+        }
+        .container-box {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, .5);
+        }
+        .container-body {
+            width: 100vw;
+            height: 85vh;
+            bottom: 0;
+            border-radius: 20px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: white;
+            position: absolute;
+        }
+        .container-box-title {
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+        #container {
+            border-color: rgb(4, 118, 36);
+            width: 100%;
+            /* height: 100vh; */
+
+            height: calc(85vh - 30px);
+        }
+        .container-box-close {
+            display: block;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            /* background-color: aqua; */
+        }
+        .container-box-close::before,
+        .container-box-close::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 14px;
+            height: 2px;
+            background: #999;
+            transform-origin: center;
+        }
+        .container-box-close::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .container-box-close::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        #select-country-btn {
+            margin: 20px 10%;
+            width: 80%;
+            height: 50px;
+            background-color: rgb(39, 154, 255);
+            color: white;
+            border-radius: 10px;
+        }
+        #myCountry {
+            border: 1px solid green;
+            margin: 20px 4px;
+            padding: 20px 10px;
+        }
+        .slide-box {
+            top: 65% !important;
+            transform: translateY(-50%) scale(.9) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-box"  id="container-box">
+        <div class="container-body">
+            <span class="container-box-close" id="container-box-close"></span>
+            <h4 class="container-box-title">
+                选择国籍
+            </h4>
+            <div id="container"></div>
+        </div>
+    </div>
+    <!-- <article></article> -->
+    <article id="myCountry"></article>
+    <button id="select-country-btn">选择国家</button>
+    <!-- <input type="text" name="" id="" placeholder=""> -->
+    <script>
+        const { mlCountrySelector } = window["countrySelector"];
+        window.onload = function() {
+            let bth = document.querySelector('#select-country-btn');
+            let myCountry = document.querySelector('#myCountry');
+            let container = document.querySelector('#container');
+            let containerBox = document.querySelector('#container-box');
+            let containerBoxClose = document.querySelector('#container-box-close');
+            let instance = mlCountrySelector.initializationFn({
+                el: '#container',
+                // 初始化请求类型,建议true
+                isHttps: true,
+                // 是否开启input动画伸缩功能 即“清除”按钮 强烈建议开启
+                animaInput: true,
+                // 自定义按钮文案,仅animaInput开启时候生效
+                inputOutBtnTxt: '取消',
+                // input没有搜到任何内容时 失去焦点立即重制所有状态
+                immediatelyReset: false,
+                // input搜索是否全局匹配
+                globalSearchWord: false,
+                // 是否支持拼音搜索,默认false(非全局匹配模式才生效)
+                supportEnSearch: false,
+                // 是否开启列表独立滚动,搜索区域固定
+                fixedAndScroll: true,
+                // 自定义滚动区域高度px fixedAndScroll=true有效
+                scrollviewHeight: null,
+                // 搜索数据源是否需要包含“推荐”部分数据
+                serachDataIncludeRecommend: false,
+                // 是否在选中国家后重置状态
+                selectCountryAfterReset: false,
+                // 当使用input搜索结果为0时候是否也显示国家列表现,如果不显示就会是空状态视图, 默认false不显示
+                searchEmptyShowCountryList: false,
+                // 搜索输入最大字符数 默认值20
+                searchInputMaxNum: 10,
+                // 是否开启连续匹配模式下的匹配独立样式 默认false 且globalSearchWord=false生效
+                searchWordAddStyle: true,
+                // 是否滚动出现侧边提示大气泡
+                scrollBodyBubble: true,
+                // 是否左侧列表区域字母吸顶(仅当fixedAndScroll=true时候有效)
+                leftTipTop: true,
+                // 侧边栏跟随监听偏移值 PX
+                leftActionSpan: 163,
+                // input类型 默认值text,如果useServerSeach=true时建议值search
+                inputType: 'text',
+                // 是否启用server搜索和推荐
+                useServerSeach: false,
+                // 自定义搜索接口(当useServerSeach=true时生效) GET请求方式
+                serverSeaAPI: '',
+                // 自定义推荐接口(当useServerSeach=true时生效) GET请求方式
+                serverTjAPI: '',
+                // 为了提供更好的兼容性可以开启载入polyfill支持
+                // getPolyFill: true,
+                // 自定义一些配置项
+                customOptions: {
+                    // 搜索框清楚图标 可以url也可以base64
+                    searchclearIcon: '',
+                    // 搜索放大镜图标 可以url也可以base64
+                    searchIcon: '',
+                    // 国家选中态图标 可以url也可以base64
+                    selectIcon: '',
+                    // 侧边栏字母选中态图标 可以url也可以base64
+                    slideItemIcon: '',
+                },
+                selectedCallback: function(res) {
+                    console.log('自定义selectedCallback...执行', res);
+                    containerBox.style.display = 'none';
+                    myCountry.innerText = JSON.stringify(res.eventItemData);
+                },
+                // 自定义清除按钮点击回调函数
+                inputOutBtnCallback: function(e) {
+                    // 主动重置状态方法
+                    instance.pubResetFn();
+                    console.log('inputOutBtnCallback...执行', e, instance);
+                },
+                // 搜索input失去焦点回调函数
+                inputBlurCallback: function(e) {
+                    console.log('inputBlurCallback...执行', e);
+                },
+                // 搜索input获得焦点回调函数
+                inputFocusCallback: function(e) {
+                    console.log('inputFocusCallback...执行', e);
+                },
+                // 点击搜索框清楚按钮图标的回调函数
+                searchClearIconCallback: function() {
+                    console.log('searchClearIconCallback...执行');
+                },
+                // 请求开始时触发的回调函数
+                apiStartCallback: function() {
+                    console.log('apiStartCallback...执行');
+                },
+                // 请求完成时触发的回调函数
+                apiEndCallback: function() {
+                    console.log('apiEndCallback...执行');
+                },
+                // 节点挂在完成后的回调函数
+                domRenderAfterCallback: function() {
+                    console.log('domRenderAfterCallback...执行');
+                }
+            }).render();
+            bth.onclick = function() {
+                containerBox.style.display = 'block';
+            };
+            containerBoxClose.onclick = function() {
+                containerBox.style.display = 'none';
+            }
+            // 当自定义元素高度时需要一步调用改方法使开启列表独立滚动,搜索区域固定效果生效(fixedAndScroll: true才有效)
+            // instance.setfixedAndScroll()
+            // 给开发人员使用的通过id获取元素的方法 必须传入id尾缀部分
+            // instance.getEleByIdPubFn(tail: string);
+            // 切换模式（暗黑ml-country-selector-dark和日间模式）， 默认日间
+            // instance.changeThemePubFn('ml-country-selector-dark');
+        }
+
+
+        // 1、搜索框图标 ok
+        // 2、国家项目选勾选态
+        // 3、侧边筛选栏选中态和气泡提示
+        // 4、主国家列表滚动联动侧边筛选栏选中态和气泡提示
+        // 5、input失去焦点和获得焦点的回调函数 ok
+        // 6、主国家列表滚动功能
+        // 7、是否开启input获取焦点的缩短且产生“自定义取消”按钮,且有点击回调函数 ok
+        // 8、是否开启input失去焦点立即回置状态的配置项 ok
+        // 9、input搜索是否进行关键词全局匹配 ok
+        // 10、可以配置搜索输入字符数 ok
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{
+  "name": "ml-country-selector",
+  "version": "2.3.4",
+  "description": "Lightweight country selector with local/server search, pinyin and i18n, ESM/UMD.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.js",
+  "scripts": {
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "build": "rollup -c",
+    "dev": "rollup --config rollup.config.dev.js -w"
+  },
+  "keywords": [
+    "country selector",
+    "country picker",
+    "country list",
+    "region selector",
+    "pinyin search",
+    "i18n",
+    "vanilla js",
+    "typescript",
+    "esm",
+    "umd",
+    "browser",
+    "search",
+    "dropdown",
+    "frontend",
+    "国家选择器",
+    "国家列表"
+  ],
+  "author": "mingle98",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org-or-user/country-selector.git"
+  },
+  "homepage": "https://github.com/your-org-or-user/country-selector#readme",
+  "bugs": {
+    "url": "https://github.com/your-org-or-user/country-selector/issues"
+  },
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.js",
+  "jsdelivr": "dist/index.js",
+  "sideEffects": false,
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.18.13",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.18.10",
+    "@rollup/plugin-alias": "^3.1.9",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "autoprefixer": "^10.4.8",
+    "eslint": "^8.27.0",
+    "eslint-plugin-react": "^7.31.10",
+    "node-sass": "^8.0.0",
+    "rollup": "^2.78.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-less": "^1.1.3",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-serve": "^2.0.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.33.0",
+    "sass": "^1.56.1",
+    "typescript": "^4.8.2",
+    "vitest": "^1.6.0",
+    "happy-dom": "^13.10.1",
+    "jsdom": "^24.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 8",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ],
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^1.3.4"
+  }
+}
