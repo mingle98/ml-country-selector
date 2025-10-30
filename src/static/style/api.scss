@@ -7,6 +7,7 @@
 
 .pageBody {
     // background-color: rgb(239, 239, 239);
+    position: relative;
 }
 
 .countryListBox, .country-area-box {
@@ -238,11 +239,11 @@ input::-webkit-search-cancel-button {
 .slide-box {
     width: 2rem;
     height: auto;
-    position: fixed;
+    position: absolute;
     right: 0;
     top: 50%;
-    z-index: 9999999999;
-    transform: translateY(-50%);
+    z-index: 9999;
+    transform: translateY(-50%) scale(0.8);
 }
 
 .slide-box .sildebarItem {

@@ -189,35 +189,10 @@ export class CountrySeletor {
         };
         let ishttps = this.options.isHttps || false;
         let pro = ishttps ? 'https' : 'http';
-        // 是否开启validateColaKey
-        let openValidateColaKey = false;
-        if (openValidateColaKey) {
-            myhttp({
-                method: 'post',
-                url: pro + '://luckycola.com.cn/validate/validateColaKey',
-                data: {
-                    colaKey: this.options.colaKey || ''
-                },
-            }).then((res: any) => {
-                console.log('init=>', res)
-                if (+res.code === 0) {
-                    this.insertHtml();
-                    this.config.domRenderAfterCallback
-                    && typeof this.config.domRenderAfterCallback === 'function'
-                    && this.config.domRenderAfterCallback();
-                } else {
-                    alert('colaKey无效,请前往官网(http://luckycola.com.cn)获取有效的colaKey')
-                }
-            }).catch(err => {
-                alert('初始化失败,请刷新重试~');
-                console.log('init error:', err);
-            })
-        } else {
-            this.insertHtml();
-            this.config.domRenderAfterCallback
-            && typeof this.config.domRenderAfterCallback === 'function'
-            && this.config.domRenderAfterCallback();
-        }
+        this.insertHtml();
+        this.config.domRenderAfterCallback
+        && typeof this.config.domRenderAfterCallback === 'function'
+        && this.config.domRenderAfterCallback();
         return me;
     };
     /**
