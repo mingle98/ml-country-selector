@@ -1,6 +1,6 @@
 {
   "name": "ml-country-selector",
-  "version": "2.3.7",
+  "version": "2.3.8",
   "description": "Lightweight country selector with local/server search, pinyin and i18n, ESM/UMD.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
