@@ -1,6 +1,6 @@
 {
   "name": "ml-country-selector",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "description": "Lightweight country selector with local/server search, pinyin and i18n, ESM/UMD.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -35,11 +35,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org-or-user/country-selector.git"
+    "url": "https://github.com/mingle98/ml-country-selector"
   },
-  "homepage": "https://github.com/your-org-or-user/country-selector#readme",
+  "homepage": "luckycola.com.cn",
   "bugs": {
-    "url": "https://github.com/your-org-or-user/country-selector/issues"
+    "url": "https://github.com/mingle98/ml-country-selector/issues"
   },
   "types": "dist/index.d.ts",
   "unpkg": "dist/index.js",
